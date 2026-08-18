@@ -2,6 +2,9 @@ import { useState } from "react";
 import { ArrowRight, Check, ChevronDown, Clock3, Mail, MapPin, Menu, X } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { committees } from "@/lib/committees";
+import { CountdownTimer } from "@/components/countdown-timer";
+
+const CONFERENCE_DATE = new Date("2025-09-12T09:00:00+05:30");
 
 const initialForm = {
   full_name: "",
@@ -71,35 +74,43 @@ export function LandingPage() {
       </header>
 
       <main id="top">
-        <section className="hero section-wrap">
-          <div className="hero-copy">
-            <p className="eyebrow">
-              <span className="pulse-dot" /> Ambitus World School presents
-            </p>
-            <h1>
-              Diplomacy
-              <br />
-              <em>starts here.</em>
-            </h1>
-            <p className="hero-text">
-              A two-day simulation of the world's most important rooms. Come ready to question,
-              negotiate and leave your mark.
-            </p>
-            <button className="primary-button" onClick={scrollToRegistration}>
-              Secure your seat <ArrowRight size={17} />
-            </button>
+        <section className="hero">
+          <div className="hero-bg" />
+          <div className="hero-overlay" />
+          <div className="hero-inner section-wrap">
+            <div className="hero-copy">
+              <p className="eyebrow">
+                <span className="pulse-dot" /> Ambitus World School presents
+              </p>
+              <h1>
+                Be the voice.
+                <br />
+                <em>Shape the world.</em>
+              </h1>
+              <p className="hero-text">
+                A two-day simulation of the world's most important rooms. Come ready to question,
+                negotiate and leave your mark.
+              </p>
+              <div className="hero-timer">
+                <span className="hero-timer-label">Conference begins in</span>
+                <CountdownTimer target={CONFERENCE_DATE} />
+              </div>
+              <button className="primary-button" onClick={scrollToRegistration}>
+                Secure your seat <ArrowRight size={17} />
+              </button>
+            </div>
+            <div className="hero-mark">
+              <div className="orbit orbit-one" />
+              <div className="orbit orbit-two" />
+              <img src="/image.png" alt="AWS MUN Edition 4 emblem" />
+              <span className="hero-year">
+                2025
+                <br />
+                <small>VIJAYAWADA</small>
+              </span>
+            </div>
           </div>
-          <div className="hero-mark">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <img src="/image.png" alt="AWS MUN Edition 4 emblem" />
-            <span className="hero-year">
-              2025
-              <br />
-              <small>VIJAYAWADA</small>
-            </span>
-          </div>
-          <div className="hero-details">
+          <div className="hero-details section-wrap">
             <div>
               <span>01</span>
               <strong>12—13</strong>
